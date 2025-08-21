@@ -1,0 +1,30 @@
+{
+  "name": "web_EuropAmateur",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y docker-compose",
+
+  "forwardPorts": [
+    "${localEnv:APP_PORT}"
+  ],
+
+  "portsAttributes": {
+    "${localEnv:APP_PORT}": {
+      "label": "Web EuropAmateur",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
